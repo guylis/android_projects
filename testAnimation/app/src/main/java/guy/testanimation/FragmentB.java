@@ -29,7 +29,8 @@ public class FragmentB extends Fragment {
         postponeEnterTransition();
 
         TransitionSet enterTransitionSet = new TransitionSet();
-        enterTransitionSet.addTransition(android.transition.TransitionInflater.from(getContext()).inflateTransition(android.R.transition.move));
+        enterTransitionSet.addTransition(android.transition.TransitionInflater.from(getContext()).inflateTransition(android.R.transition.slide_top));
+        enterTransitionSet.setDuration(1000);
         setSharedElementEnterTransition(enterTransitionSet);
         setSharedElementReturnTransition(null);
 
@@ -44,6 +45,7 @@ public class FragmentB extends Fragment {
         if (arguments != null) {
             item = (Item) arguments.getSerializable("ITEM");
             ((TextView)rootView.findViewById(R.id.details_title)).setText(item.getText());
+
             rootView.findViewById(R.id.details_title).setTransitionName(item.getText());
             startPostponedEnterTransition();
         }
